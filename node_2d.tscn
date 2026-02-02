@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://node_2d.gd" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D" unique_id=121734563]
+script = ExtResource("1_wtcfe")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2127007305]
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=2079487559]
+offset_right = 147.0
+offset_bottom = 54.0
+text = "HELLO WORLD
+"
+
+[node name="Label" type="Label" parent="." unique_id=79034919]
+offset_right = 40.0
+offset_bottom = 23.0
