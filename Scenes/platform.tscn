@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhd8dm5twi1qn"]
+
+[ext_resource type="Texture2D" uid="uid://dg4i0x46134n6" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/spring_.png" id="1_mi635"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bxr"]
+size = Vector2(32, 8)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1813842091]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=38339380]
+texture = ExtResource("1_mi635")
+region_enabled = true
+region_rect = Rect2(0, 7, 32, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1885242065]
+shape = SubResource("RectangleShape2D_s8bxr")
+one_way_collision = true

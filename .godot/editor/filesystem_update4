@@ -1,0 +1,7 @@
+res://Scenes/game.tscn
+res://addons/copilot/small_icon.tres
+res://addons/copilot/large_icon.tres
+res://Scenes/platform.tscn
+res://Scenes/coin.gd
+res://Scenes/coin.tscn
+res://Scripts/coin.gd
