@@ -3,7 +3,8 @@
 [ext_resource type="AudioStream" uid="uid://cj1mmuj88hdi8" path="res://Assets/Music/xDeviruchi - 16 bit Fantasy & Adventure (2025)/mp3/03 - Definitely Our Town.mp3" id="1_fbmny"]
 
 [node name="Music" type="AudioStreamPlayer2D" unique_id=648795975]
-position = Vector2(-7, 0)
+position = Vector2(557, 324)
 stream = ExtResource("1_fbmny")
 autoplay = true
 bus = &"Music"
+area_mask = 15
