@@ -1042,7 +1042,7 @@ script = ExtResource("1_h4fw4")
 
 [node name="CharacterBody2D" parent="." unique_id=1813934214 instance=ExtResource("1_ebmjs")]
 z_index = 1
-position = Vector2(1430, -172)
+position = Vector2(-23, 81)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1522031029]
 position = Vector2(106, 163)

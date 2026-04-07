@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GameplayMechanics"
-run/main_scene="res://Scenes/game_3d.tscn"
+run/main_scene="uid://bycqc8ryiekby"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://fkaeanbsv1fy"
 [autoload]
 
 Music="*uid://wjnkdigcoi6y"
+NakamaMultiplayer="*res://Scripts/nakama_multiplayer.gd"
 
 [editor_plugins]
 
