@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/enemy_patrol_3d.gd" id="1_0f54g"]
+[ext_resource type="Script" path="res://Scripts/billboard_sprite_3d.gd" id="2_7v80v"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/slime_green.png" id="3_8tb6c"]
+[ext_resource type="PackedScene" path="res://Scenes/killzone_3d.tscn" id="4_nsm1y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ef3j"]
+radius = 0.3
+height = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8tw5"]
+size = Vector3(0.9, 0.7, 0.8)
+
+[node name="Slime3D" type="CharacterBody3D"]
+script = ExtResource("1_0f54g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_8ef3j")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+position = Vector3(0, 0.5, 0)
+script = ExtResource("2_7v80v")
+texture = ExtResource("3_8tb6c")
+pixel_size = 0.02
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="Killzone3D" parent="." instance=ExtResource("4_nsm1y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone3D"]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("BoxShape3D_u8tw5")
+
+[node name="BottomLeft" type="RayCast3D" parent="."]
+position = Vector3(-0.35, 0.7, 0)
+target_position = Vector3(-0.2, -1.0, 0)
+enabled = true
+
+[node name="BottomRight" type="RayCast3D" parent="."]
+position = Vector3(0.35, 0.7, 0)
+target_position = Vector3(0.2, -1.0, 0)
+enabled = true

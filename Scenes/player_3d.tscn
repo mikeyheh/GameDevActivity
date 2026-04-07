@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://byb7grc722x3r"]
+
+[ext_resource type="Script" uid="uid://da250e8wf56or" path="res://Scripts/player_3d.gd" id="1_l80cf"]
+[ext_resource type="Script" uid="uid://6e007igpep7" path="res://Scripts/billboard_sprite_3d.gd" id="2_r5fqg"]
+[ext_resource type="Texture2D" uid="uid://de0qguaaw2wxw" path="res://Assets/sprites/knight.png" id="3_l38ip"]
+[ext_resource type="AudioStream" uid="uid://cp5dy0u13i6ll" path="res://Assets/Sound/freesound_community-running-in-grass-6237.mp3" id="4_fb43l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fbrb"]
+radius = 0.35
+height = 0.9393555
+
+[node name="Player" type="CharacterBody3D" unique_id=1692130700 groups=["player"]]
+script = ExtResource("1_l80cf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=484704762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0803223, 0)
+shape = SubResource("CapsuleShape3D_0fbrb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1755921751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.02
+texture = ExtResource("3_l38ip")
+script = ExtResource("2_r5fqg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1062770148]
+stream = ExtResource("4_fb43l")
+unit_size = 8.0
+max_distance = 20.0

@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/billboard_sprite_3d.gd" id="1_5rh6o"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/knight.png" id="2_j8we6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1x4m7"]
+size = Vector2(14, 14)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vc7a"]
+albedo_color = Color(0.224, 0.278, 0.184, 1)
+roughness = 1.0
+
+[node name="BillboardSpriteDemo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.788011, -0.596619, 0.151951, 0, 0.24693, 0.969033, -0.615661, -0.763614, 0.194587, 0, 4.8, 0)
+light_energy = 1.45
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1x4m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_8vc7a")
+
+[node name="BillboardSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+script = ExtResource("1_5rh6o")
+texture = ExtResource("2_j8we6")
+pixel_size = 0.02
+camera_path = NodePath("../Camera3D")
+lock_to_y_axis = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.970296, 0.241922, 0, -0.241922, 0.970296, 0, 2.2, 6.0)
+current = true
+fov = 57.0

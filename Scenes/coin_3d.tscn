@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/coin_3d.gd" id="1_geqfu"]
+[ext_resource type="Script" path="res://Scripts/billboard_sprite_3d.gd" id="2_qf07g"]
+[ext_resource type="Texture2D" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/objects_/coin_.png" id="3_5f6in"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6v7u2"]
+radius = 0.32
+
+[sub_resource type="Animation" id="Animation_t4qv0"]
+resource_name = "pickup"
+length = 0.18
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.18),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3q5e"]
+_data = {
+&"pickup": SubResource("Animation_t4qv0")
+}
+
+[node name="Coin3D" type="Area3D"]
+script = ExtResource("1_geqfu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.5, 0)
+shape = SubResource("SphereShape3D_6v7u2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+position = Vector3(0, 0.5, 0)
+script = ExtResource("2_qf07g")
+texture = ExtResource("3_5f6in")
+pixel_size = 0.02
+hframes = 12
+frame = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u3q5e")
+}

@@ -1,0 +1,142 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/player_3d.tscn" id="1_8rk1o"]
+[ext_resource type="PackedScene" path="res://Scenes/coin_3d.tscn" id="2_ur4x5"]
+[ext_resource type="PackedScene" path="res://Scenes/slime_3d.tscn" id="3_1a2vw"]
+[ext_resource type="PackedScene" path="res://Scenes/killzone_3d.tscn" id="4_72v9u"]
+[ext_resource type="Script" path="res://Scripts/game_manager_3d.gd" id="5_11x3f"]
+[ext_resource type="Script" path="res://Scripts/camera_follow_3d.gd" id="6_62k80"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/PixelOperator8.ttf" id="7_3vqmn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4x9m3"]
+sky_top_color = Color(0.239216, 0.45098, 0.835294, 1)
+sky_horizon_color = Color(0.615686, 0.784314, 0.964706, 1)
+ground_bottom_color = Color(0.0941176, 0.168627, 0.290196, 1)
+ground_horizon_color = Color(0.301961, 0.447059, 0.541176, 1)
+
+[sub_resource type="Sky" id="Sky_17n6v"]
+sky_material = SubResource("ProceduralSkyMaterial_4x9m3")
+
+[sub_resource type="Environment" id="Environment_tuk7n"]
+background_mode = 2
+sky = SubResource("Sky_17n6v")
+ambient_light_source = 2
+ambient_light_energy = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yea6d"]
+albedo_color = Color(0.309, 0.454, 0.233, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2yo4"]
+albedo_color = Color(0.564, 0.478, 0.341, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_9v6rh"]
+size = Vector3(40, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m95du"]
+size = Vector3(40, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pt1f"]
+size = Vector3(4, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nrvj"]
+size = Vector3(4, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47m7r"]
+size = Vector3(120, 2, 30)
+
+[node name="Game3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tuk7n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.816491, -0.561951, 0.132369, 0, 0.229203, 0.973378, -0.577357, -0.794751, 0.187162, 0, 6, 0)
+light_energy = 1.6
+shadow_enabled = true
+
+[node name="GameManager" type="Node" parent="." groups=["game_manager"]]
+script = ExtResource("5_11x3f")
+
+[node name="Player" parent="." instance=ExtResource("1_8rk1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.970296, 0.241922, 0, -0.241922, 0.970296, 0, 2.6, 5.6)
+script = ExtResource("6_62k80")
+current = true
+target_path = NodePath("../Player")
+follow_speed = 7.5
+offset = Vector3(0, 2.2, 5.4)
+look_at_offset = Vector3(0, 1, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_m95du")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_9v6rh")
+surface_material_override/0 = SubResource("StandardMaterial3D_yea6d")
+
+[node name="PlatformA" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlatformA"]
+shape = SubResource("BoxShape3D_2nrvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlatformA"]
+mesh = SubResource("BoxMesh_3pt1f")
+surface_material_override/0 = SubResource("StandardMaterial3D_y2yo4")
+
+[node name="PlatformB" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlatformB"]
+shape = SubResource("BoxShape3D_2nrvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlatformB"]
+mesh = SubResource("BoxMesh_3pt1f")
+surface_material_override/0 = SubResource("StandardMaterial3D_y2yo4")
+
+[node name="PlatformC" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0, 1.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlatformC"]
+shape = SubResource("BoxShape3D_2nrvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlatformC"]
+mesh = SubResource("BoxMesh_3pt1f")
+surface_material_override/0 = SubResource("StandardMaterial3D_y2yo4")
+
+[node name="Coin3D" parent="." instance=ExtResource("2_ur4x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4, 0)
+
+[node name="Coin3D2" parent="." instance=ExtResource("2_ur4x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.5, 0)
+
+[node name="Coin3D3" parent="." instance=ExtResource("2_ur4x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.2, 0)
+
+[node name="Coin3D4" parent="." instance=ExtResource("2_ur4x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.8, 0)
+
+[node name="Slime3D" parent="." instance=ExtResource("3_1a2vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.6, 0)
+
+[node name="Killzone3D" parent="." instance=ExtResource("4_72v9u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -3.3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone3D"]
+shape = SubResource("BoxShape3D_47m7r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 220.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("7_3vqmn")
+text = "Score: 0"

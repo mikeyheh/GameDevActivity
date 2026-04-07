@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/killzone_3d.gd" id="1_bk6uj"]
+
+[node name="Killzone3D" type="Area3D"]
+script = ExtResource("1_bk6uj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
