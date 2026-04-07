@@ -1,4 +1,8 @@
-<img width="1160" height="704" alt="image" src="https://github.com/user-attachments/assets/80d3524f-1e2d-41c5-a422-d4140c8b92ba" />
+Week 3: AI Enemies
+<img width="1156" height="724" alt="image" src="https://github.com/user-attachments/assets/a5961dc1-9bb2-4081-b73f-0198bc71e259" />
 
+Week 4: 3D Conversion is Work in Progress 
+<img width="1158" height="715" alt="image" src="https://github.com/user-attachments/assets/7040339d-28ab-47ee-a30c-300a9012a246" />
 
-Above is the text "Hello World" using the "TextEdit" childnode in Godot
+Week 4: Multiplayer
+<img width="1152" height="675" alt="image" src="https://github.com/user-attachments/assets/dff485a3-0aab-40c9-aeb5-e63f2ec82860" />
