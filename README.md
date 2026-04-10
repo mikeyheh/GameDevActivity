@@ -1,3 +1,5 @@
+The different levels are represented in the different islands the player both traverses and ascends. Each island introducing a new level of difficulty.
+
 Week 3: AI Enemies
 <img width="1156" height="724" alt="image" src="https://github.com/user-attachments/assets/a5961dc1-9bb2-4081-b73f-0198bc71e259" />
 
